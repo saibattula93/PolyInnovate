@@ -123,7 +123,7 @@ process_url_clicked = st.sidebar.button("Process URLs")
 file_path = "faiss_store_openai.pkl"
 
 main_placeholder = st.empty()
-llm = OpenAI(temperature=0.9, max_tokens=500,openai_api_key="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")
+llm = OpenAI(temperature=0.9, max_tokens=500,openai_api_key="OPENAI_API_KEY")
 
 if process_url_clicked:
     # load data
@@ -138,7 +138,7 @@ if process_url_clicked:
     main_placeholder.text("Text Splitter...Started...✅✅✅")
     docs = text_splitter.split_documents(data)
     # create embeddings and save it to FAISS index
-    embeddings = OpenAIEmbeddings()
+    embeddings = OpenAIEmbeddings(openai_api_key="OPENAI_API_KEY")
     vectorstore_openai = FAISS.from_documents(docs, embeddings)
     main_placeholder.text("Embedding Vector Started Building...✅✅✅")
     time.sleep(2)
