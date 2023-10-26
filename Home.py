@@ -58,7 +58,10 @@ if process_url_clicked:
     docs = text_splitter.split_documents(data)
 
    
-    embeddings = OpenAIEmbeddings()
+    try:
+        embeddings = OpenAIEmbeddings()
+    except Exception as e:
+        raise (e)
    
 
     vectorstore_openai = FAISS.from_documents(docs, embeddings)
