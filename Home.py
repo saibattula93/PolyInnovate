@@ -17,15 +17,15 @@ load_dotenv()
 
 st.title("Poly AI Research Insights 📚🤖")
 
-st.sidebar.title("Article URLs")
 
+st.sidebar.title("Open API Key")
 with st.sidebar:
     openai_api_key = st.secrets.openai_api_key = "" #os.getenv("OPENAI_API_KEY") if os.getenv("OPENAI_API_KEY") is not None else ""  # only for development environment, otherwise it should return None
     user_api_key = st.text_input("Introduce your OpenAI API Key (https://platform.openai.com/account/api-keys) 🔑", value=openai_api_key, type="password")
     if user_api_key != "":
         openai_api_key = user_api_key
 
-    
+st.sidebar.title("Article URLs") 
 urls = []
 for i in range(2):
     url = st.sidebar.text_input(f"URL {i+1} 🌐")
