@@ -123,7 +123,7 @@ process_url_clicked = st.sidebar.button("Process URLs")
 file_path = "faiss_store_openai.pkl"
 
 main_placeholder = st.empty()
-llm = OpenAI(temperature=0.9, max_tokens=500)
+llm = OpenAI(temperature=0.9, max_tokens=500,openai_api_key="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")
 
 if process_url_clicked:
     # load data
