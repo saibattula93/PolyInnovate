@@ -107,12 +107,22 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import UnstructuredURLLoader
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
+from langchain.chat_models import ChatOpenAI
+
 
 from dotenv import load_dotenv
 load_dotenv()  # take environment variables from .env (especially openai api key)
 
 st.title("RockyBot: News Research Tool 📈")
 st.sidebar.title("News Article URLs")
+
+OPENAI_API_KEY = st.secrets["openai_api_key"]
+
+def get_model(model_name, api_key):
+    if model_name == "openai":
+        model = ChatOpenAI(openai_api_key=api_key, model_name="gpt-3.5-turbo")
+    return model
+
 
 urls = []
 for i in range(3):
@@ -123,7 +133,7 @@ process_url_clicked = st.sidebar.button("Process URLs")
 file_path = "faiss_store_openai.pkl"
 
 main_placeholder = st.empty()
-llm = OpenAI(temperature=0.9, max_tokens=500,openai_api_key="OPENAI_API_KEY")
+llm = OpenAI(temperature=0.9, max_tokens=500)
 
 if process_url_clicked:
     # load data
@@ -138,7 +148,7 @@ if process_url_clicked:
     main_placeholder.text("Text Splitter...Started...✅✅✅")
     docs = text_splitter.split_documents(data)
     # create embeddings and save it to FAISS index
-    embeddings = OpenAIEmbeddings(openai_api_key="OPENAI_API_KEY")
+    embeddings = OpenAIEmbeddings()
     vectorstore_openai = FAISS.from_documents(docs, embeddings)
     main_placeholder.text("Embedding Vector Started Building...✅✅✅")
     time.sleep(2)
