@@ -59,7 +59,7 @@ if process_url_clicked:
 
    
     try:
-        embeddings = OpenAIEmbeddings()
+        embeddings = OpenAIEmbeddings(openai_api_key=user_api_key)
     except Exception as e:
         raise (e)
    
