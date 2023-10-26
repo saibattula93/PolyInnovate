@@ -42,7 +42,10 @@ file_path = "faiss_store_openai.pkl"
 
 
 main_placeholder = st.empty()
-llm = OpenAI(temperature=0.6, max_tokens=500)
+try:
+    llm = OpenAI(temperature=0.6, max_tokens=500)
+except Exception as e:
+    st.error(f"Error: {e}")
 
 if process_url_clicked:
     loader = UnstructuredURLLoader(urls=urls)
