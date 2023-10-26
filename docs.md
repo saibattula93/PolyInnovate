@@ -6,7 +6,7 @@ Creating an R&D Insights Bot using Language Models (LLMs) offers financial and r
 ### GitHub Repository:
 For those keen on diving into the code or contributing, the entire project is open-source and hosted on GitHub. Find it [here]("https://github.com/saibattula93/PolyInnovate").
 
-About the Creator:
+### About the Creator:
 Hello! I'm Sai Durga Prasad, an ML Engineer and an LLMs enthusiast.
 
 Let's Connect and Collaborate:
