@@ -41,7 +41,7 @@ file_path = "faiss_store_openai.pkl"
 
 main_placeholder = st.empty()
 try:
-    llm = OpenAI(temperature=0.6, max_tokens=500, openai_api_key=user_api_key)
+    llm = OpenAI(temperature=0.7, max_tokens=600, openai_api_key=user_api_key)
 except Exception as e:
     st.error("Please enter your OpenAI API Key")
 
